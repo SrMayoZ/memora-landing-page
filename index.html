@@ -315,6 +315,36 @@
                     });
                 });
             });
+
+            const betaForm = document.getElementById('beta-form');
+            const formMessage = document.getElementById('form-message');
+            
+            betaForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const form = e.target;
+                const formData = new FormData(form);
+                const actionUrl = form.action;
+
+                try {
+                    const response = await fetch(actionUrl, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        formMessage.textContent = '¡Gracias por tu interés! Te hemos añadido a la lista de espera.';
+                        formMessage.classList.add('text-green-400');
+                        formMessage.classList.remove('text-red-400');
+                        form.reset();
+                    } else {
+                        throw new Error('Form submission failed.');
+                    }
+                } catch (error) {
+                    formMessage.textContent = '¡Ups! Algo salió mal. Por favor, inténtalo de nuevo.';
+                    formMessage.classList.add('text-red-400');
+                    formMessage.classList.remove('text-green-400');
+                }
+            });
         });
     </script>
 </body>
