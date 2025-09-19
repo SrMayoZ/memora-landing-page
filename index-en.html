@@ -307,21 +307,6 @@
                 });
             });
 
-            const betaForm = document.getElementById('beta-form');
-            const emailInput = document.getElementById('email-input');
-            const formMessage = document.getElementById('form-message');
-
-            betaForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                if (emailInput.value) {
-                    formMessage.textContent = 'Thank you for your interest! We have added you to the waitlist.';
-                    emailInput.value = '';
-                    setTimeout(() => {
-                        formMessage.textContent = '';
-                    }, 5000);
-                }
-            });
-
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -329,6 +314,36 @@
                         behavior: 'smooth'
                     });
                 });
+            });
+
+            const betaForm = document.getElementById('beta-form');
+            const formMessage = document.getElementById('form-message');
+            
+            betaForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const form = e.target;
+                const formData = new FormData(form);
+                const actionUrl = form.action;
+
+                try {
+                    const response = await fetch(actionUrl, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        formMessage.textContent = 'Thank you for your interest! We have added you to the waitlist.';
+                        formMessage.classList.add('text-green-400');
+                        formMessage.classList.remove('text-red-400');
+                        form.reset();
+                    } else {
+                        throw new Error('Form submission failed.');
+                    }
+                } catch (error) {
+                    formMessage.textContent = 'Oops! Something went wrong. Please try again.';
+                    formMessage.classList.add('text-red-400');
+                    formMessage.classList.remove('text-green-400');
+                }
             });
         });
     </script>
