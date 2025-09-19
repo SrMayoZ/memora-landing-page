@@ -226,7 +226,6 @@
                      <input type="email" id="email-input" required placeholder="Tu correo electrónico" class="w-full px-4 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#9884c7]">
                      <button type="submit" class="bg-white text-[#6D5B97] px-8 py-3 rounded-full font-semibold cta-button">Notifícame</button>
                  </form>
-                 <div id="form-message" class="mt-4 text-green-400"></div>
             </div>
         </section>
     </main>
@@ -314,36 +313,6 @@
                         behavior: 'smooth'
                     });
                 });
-            });
-
-            const betaForm = document.getElementById('beta-form');
-            const formMessage = document.getElementById('form-message');
-            
-            betaForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                const form = e.target;
-                const formData = new FormData(form);
-                const actionUrl = form.action;
-
-                try {
-                    const response = await fetch(actionUrl, {
-                        method: 'POST',
-                        body: formData
-                    });
-
-                    if (response.ok) {
-                        formMessage.textContent = '¡Gracias por tu interés! Te hemos añadido a la lista de espera.';
-                        formMessage.classList.add('text-green-400');
-                        formMessage.classList.remove('text-red-400');
-                        form.reset();
-                    } else {
-                        throw new Error('Form submission failed.');
-                    }
-                } catch (error) {
-                    formMessage.textContent = '¡Ups! Algo salió mal. Por favor, inténtalo de nuevo.';
-                    formMessage.classList.add('text-red-400');
-                    formMessage.classList.remove('text-green-400');
-                }
             });
         });
     </script>
