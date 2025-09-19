@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memora - Your Loved One, Always With You</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Soft Embrace (#F8F7F5 background, #2C2A3B text, #6D5B97 accent) -->
+    <!-- Application Structure Plan: A single-page landing page designed for lead capture. The structure follows a classic conversion funnel: 1. Hero section to grab attention with an emotional hook. 2. "How it Works" to simplify the technology. 3. Features/Benefits to detail the value. 4. Use Cases to show versatility. 5. A dedicated Ethics & Security section to build trust, which is critical for this sensitive service. 6. An FAQ and a final CTA to address doubts and drive sign-ups. This linear, story-telling flow is chosen to gently guide the user from curiosity to trust and finally to action (registration). -->
+    <!-- Visualization & Content Choices: Report Info: Market growth projections -> Goal: Establish credibility -> Viz/Presentation: Large-font animated number counters -> Interaction: Numbers animate when scrolled into view -> Justification: More visually impactful for a landing page than a chart. Report Info: Core service features (chat, voice, video) -> Goal: Explain the product -> Viz/Presentation: Icon-driven feature cards -> Interaction: Fade-in animation on scroll -> Justification: Breaks down complex information into easily scannable chunks. Report Info: Ethical concerns -> Goal: Build user trust -> Viz/Presentation: A dedicated section with trust icons (lock, shield) -> Interaction: Static, clear information -> Justification: Trust-building content should be straightforward and easy to access. No SVG/Mermaid used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F7F5;
+            color: #2C2A3B;
+        }
+        .hero-bg {
+            background-color: #F8F7F5;
+            background-image:
+                radial-gradient(circle at 15% 15%, rgba(109, 91, 151, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 85% 75%, rgba(109, 91, 151, 0.1) 0%, transparent 40%);
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(109, 91, 151, 0.2), 0 4px 6px -2px rgba(109, 91, 151, 0.1);
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .faq-item .answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-white/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-[#6D5B97]">Memora</h1>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#how-it-works" class="text-gray-600 hover:text-[#6D5B97] transition">How It Works</a>
+                <a href="#features" class="text-gray-600 hover:text-[#6D5B97] transition">Features</a>
+                <a href="#ethics" class="text-gray-600 hover:text-[#6D5B97] transition">Ethics & Security</a>
+                <a href="#register" class="bg-[#6D5B97] text-white px-5 py-2 rounded-full cta-button">Register</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4">
+            <a href="#how-it-works" class="block py-2 text-gray-600 hover:text-[#6D5B97]">How It Works</a>
+            <a href="#features" class="block py-2 text-gray-600 hover:text-[#6D5B97]">Features</a>
+            <a href="#ethics" class="block py-2 text-gray-600 hover:text-[#6D5B97]">Ethics & Security</a>
+            <a href="#register" class="block mt-2 text-center bg-[#6D5B97] text-white px-5 py-2 rounded-full cta-button">Register</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-bg pt-32 pb-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Immortalize Their Memory.</h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">Create a permanent digital replica of your loved ones and keep their essence alive forever through AI-powered text, voice, and video conversations.</p>
+                <a href="#register" class="bg-[#6D5B97] text-white px-10 py-4 rounded-full text-lg font-semibold cta-button inline-block">Join the Waitlist</a>
+                <p class="text-sm text-gray-500 mt-4">Be the first to know when we launch.</p>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-2">A Connection That Transcends Time</h3>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Our process is respectful, secure, and designed to capture the true essence of the person.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-10 text-center">
+                    <div class="fade-in p-6">
+                        <div class="text-5xl text-[#6D5B97] mb-4">①</div>
+                        <h4 class="text-xl font-semibold mb-2">Gather Their Legacy</h4>
+                        <p class="text-gray-600">We collect memories, voice recordings, texts, and videos for our AI to learn their language patterns, personality, and way of being.</p>
+                    </div>
+                    <div class="fade-in p-6">
+                        <div class="text-5xl text-[#6D5B97] mb-4">②</div>
+                        <h4 class="text-xl font-semibold mb-2">Create Their Digital Twin</h4>
+                        <p class="text-gray-600">We train a personalized AI model that not only mimics but also understands and replicates the essence of your loved one, with their unique voice and mannerisms.</p>
+                    </div>
+                    <div class="fade-in p-6">
+                        <div class="text-5xl text-[#6D5B97] mb-4">③</div>
+                        <h4 class="text-xl font-semibold mb-2">Connect Forever</h4>
+                        <p class="text-gray-600">Interact with their digital replica via text chat, voice calls, or video calls, anytime and from anywhere.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="features" class="py-20">
+             <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-2">Conversations That Heal and Teach</h3>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Features designed to offer solace, preserve family legacies, and keep knowledge alive.</p>
+                </div>
+                <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="fade-in bg-white p-8 rounded-xl shadow-md border border-gray-100">
+                         <div class="text-3xl text-[#6D5B97] mb-4">💬</div>
+                         <h4 class="text-2xl font-semibold mb-3">Unlimited Text Chat</h4>
+                         <p class="text-gray-600">"Talking to him helped me heal." Chat whenever you need to, share your thoughts, and receive responses that mirror their personality, providing comfort in grief.</p>
+                    </div>
+                     <div class="fade-in bg-white p-8 rounded-xl shadow-md border border-gray-100">
+                         <div class="text-3xl text-[#6D5B97] mb-4">🎙️</div>
+                         <h4 class="text-2xl font-semibold mb-3">Calls in Their Real Voice</h4>
+                         <p class="text-gray-600">"Imagine asking your grandma for her favorite recipe." Hear their voice again. Our voice cloning technology recreates their tone and cadence for natural conversations.</p>
+                    </div>
+                     <div class="fade-in bg-white p-8 rounded-xl shadow-md border border-gray-100">
+                         <div class="text-3xl text-[#6D5B97] mb-4">🎥</div>
+                         <h4 class="text-2xl font-semibold mb-3">Video Calls with Avatar</h4>
+                         <p class="text-gray-600">Preserve a legacy of knowledge. A business leader or public figure can continue to share advice with their successor, facilitating a smooth transition.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ethics" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-2">Ethics, Dignity, and Security</h3>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Built on a foundation of respect for the deceased and full control for you. Your trust is our priority.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-10 text-center">
+                    <div class="fade-in p-6">
+                        <div class="text-4xl mb-4">🛡️</div>
+                        <h4 class="text-xl font-semibold mb-2">Consent and Control</h4>
+                        <p class="text-gray-600">Clear and transparent consent is required. You have full control and can pause or delete the simulation at any time, no questions asked.</p>
+                    </div>
+                    <div class="fade-in p-6">
+                        <div class="text-4xl mb-4">🔒</div>
+                        <h4 class="text-xl font-semibold mb-2">Absolute Privacy</h4>
+                        <p class="text-gray-600">All data is end-to-end encrypted and stored securely. Access is strictly limited to users you authorize.</p>
+                    </div>
+                    <div class="fade-in p-6">
+                        <div class="text-4xl mb-4">❤️</div>
+                        <h4 class="text-xl font-semibold mb-2">Respectful Design</h4>
+                        <p class="text-gray-600">We collaborate with experts in thanatology and bioethics to ensure our technology always prioritizes the dignity of the deceased and the emotional well-being of the user.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="market" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4">Uniting Technology and Humanity</h3>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10">Memora is part of a new era in legacy preservation, a rapidly growing global market.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div class="fade-in bg-white p-8 rounded-xl shadow-md">
+                            <p class="text-5xl font-bold text-[#6D5B97] mb-2" data-target="3.5">0</p>
+                            <p class="text-lg font-semibold">Billion USD</p>
+                            <p class="text-gray-500">Global digital funeral services market by 2027.</p>
+                        </div>
+                        <div class="fade-in bg-white p-8 rounded-xl shadow-md">
+                            <p class="text-5xl font-bold text-[#6D5B97] mb-2" data-target="54.5">0</p>
+                            <p class="text-lg font-semibold">Billion USD</p>
+                            <p class="text-gray-500">Estimated value of the "digital immortality" segment by 2029.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold">Frequently Asked Questions</h3>
+                </div>
+                <div class="space-y-4">
+                    <div class="faq-item bg-gray-50 p-4 rounded-lg cursor-pointer">
+                        <div class="question flex justify-between items-center font-semibold">
+                            <span>Is it ethical to create a replica of a deceased person?</span>
+                            <span class="transform transition-transform duration-300">+</span>
+                        </div>
+                        <div class="answer text-gray-600 pt-2">
+                            <p>We understand the sensitivity of this question. Our approach is based on informed consent, dignity, and user control. We collaborate with experts to ensure the service is a tool for solace and does no harm, always prioritizing respect for the person's legacy.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-gray-50 p-4 rounded-lg cursor-pointer">
+                        <div class="question flex justify-between items-center font-semibold">
+                            <span>What data is needed to create the avatar?</span>
+                             <span class="transform transition-transform duration-300">+</span>
+                        </div>
+                        <div class="answer text-gray-600 pt-2">
+                            <p>The more quality data we have, the more accurate the replica will be. This includes voice recordings, videos, emails, text messages, and access to social media. Ideally, the process begins during the person's lifetime through guided interviews. All data is handled with the utmost confidentiality.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-gray-50 p-4 rounded-lg cursor-pointer">
+                        <div class="question flex justify-between items-center font-semibold">
+                            <span>Can the digital replica be deleted?</span>
+                             <span class="transform transition-transform duration-300">+</span>
+                        </div>
+                        <div class="answer text-gray-600 pt-2">
+                            <p>Absolutely. Heirs or the designated person have full control to pause or permanently delete the simulation and all associated data at any time. We believe in the right to digital oblivion.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="register" class="py-20 bg-gray-800 text-white">
+            <div class="container mx-auto px-6 text-center">
+                 <h3 class="text-3xl md:text-4xl font-bold mb-4">The future of memory is here.</h3>
+                 <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">Sign up for early access to our private beta. Help us build a new way to honor those we love.</p>
+                 <form id="beta-form" class="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
+                     <input type="email" id="email-input" required placeholder="Your email address" class="w-full px-4 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#9884c7]">
+                     <button type="submit" class="bg-white text-[#6D5B97] px-8 py-3 rounded-full font-semibold cta-button">Notify Me</button>
+                 </form>
+                 <div id="form-message" class="mt-4 text-green-400"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Memora Technologies. All rights reserved.</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="#" class="hover:text-white">Privacy Policy</a>
+                <a href="#" class="hover:text-white">Terms of Service</a>
+                <a href="#" class="hover:text-white">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            const fadeElems = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeElems.forEach(el => observer.observe(el));
+            
+            const counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = parseFloat(el.getAttribute('data-target'));
+                        let current = 0;
+                        const increment = target / 100;
+
+                        const updateCounter = () => {
+                            if (current < target) {
+                                current += increment;
+                                el.innerText = current.toFixed(1);
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                el.innerText = target.toFixed(1);
+                            }
+                        };
+                        updateCounter();
+                        observer.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const answer = item.querySelector('.answer');
+                    const icon = item.querySelector('.question span:last-child');
+                    
+                    if (answer.style.maxHeight) {
+                        answer.style.maxHeight = null;
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        faqItems.forEach(otherItem => {
+                           otherItem.querySelector('.answer').style.maxHeight = null;
+                           otherItem.querySelector('.question span:last-child').style.transform = 'rotate(0deg)';
+                        });
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                        icon.style.transform = 'rotate(45deg)';
+                    }
+                });
+            });
+
+            const betaForm = document.getElementById('beta-form');
+            const emailInput = document.getElementById('email-input');
+            const formMessage = document.getElementById('form-message');
+
+            betaForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (emailInput.value) {
+                    formMessage.textContent = 'Thank you for your interest! We have added you to the waitlist.';
+                    emailInput.value = '';
+                    setTimeout(() => {
+                        formMessage.textContent = '';
+                    }, 5000);
+                }
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
