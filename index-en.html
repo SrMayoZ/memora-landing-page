@@ -222,7 +222,7 @@
             <div class="container mx-auto px-6 text-center">
                  <h3 class="text-3xl md:text-4xl font-bold mb-4">The future of memory is here.</h3>
                  <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">Sign up for early access to our private beta. Help us build a new way to honor those we love.</p>
-                 <form id="beta-form" action="https://f6e0b9a6.sibforms.com/serve/MUIFAJxCeH1SmQhj0F8IbSuVmPpCm7z05zRIMo4YC9rTHfJ3me_D1b0ER3gwv4TIdncaDoUQsCKSC0PYaScc-hcRef6jS4bTaMby4oXyf7OKTtBzbv2cq86PeiYSEofTacNysLqHMqD23sUqDf-P47VZ8ierpkWy69XXRD4bzMSZVHUSkIDDyRBlvm6XUyBb2-IF8zxbcgQh9KGs" method="POST" class="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
+                 <form id="beta-form" class="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
                      <input type="email" id="email-input" required placeholder="Your email address" class="w-full px-4 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#9884c7]">
                      <button type="submit" class="bg-white text-[#6D5B97] px-8 py-3 rounded-full font-semibold cta-button">Notify Me</button>
                  </form>
@@ -307,6 +307,21 @@
                 });
             });
 
+            const betaForm = document.getElementById('beta-form');
+            const emailInput = document.getElementById('email-input');
+            const formMessage = document.getElementById('form-message');
+
+            betaForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (emailInput.value) {
+                    formMessage.textContent = 'Thank you for your interest! We have added you to the waitlist.';
+                    emailInput.value = '';
+                    setTimeout(() => {
+                        formMessage.textContent = '';
+                    }, 5000);
+                }
+            });
+
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -314,36 +329,6 @@
                         behavior: 'smooth'
                     });
                 });
-            });
-
-            const betaForm = document.getElementById('beta-form');
-            const formMessage = document.getElementById('form-message');
-            
-            betaForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                const form = e.target;
-                const formData = new FormData(form);
-                const actionUrl = form.action;
-
-                try {
-                    const response = await fetch(actionUrl, {
-                        method: 'POST',
-                        body: formData
-                    });
-
-                    if (response.ok) {
-                        formMessage.textContent = 'Thank you for your interest! We have added you to the waitlist.';
-                        formMessage.classList.add('text-green-400');
-                        formMessage.classList.remove('text-red-400');
-                        form.reset();
-                    } else {
-                        throw new Error('Form submission failed.');
-                    }
-                } catch (error) {
-                    formMessage.textContent = 'Oops! Something went wrong. Please try again.';
-                    formMessage.classList.add('text-red-400');
-                    formMessage.classList.remove('text-green-400');
-                }
             });
         });
     </script>
