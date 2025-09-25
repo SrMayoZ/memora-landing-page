@@ -41,15 +41,9 @@
             overflow: hidden;
             transition: max-height 0.5s ease-in-out, padding-top 0.5s ease-in-out, padding-bottom 0.5s ease-in-out;
         }
-        .brand-text {
-            color: #6D5B97;
-        }
-        .brand-bg {
-            background-color: #6D5B97;
-        }
-        .brand-bg-dark {
-            background-color: #2C2A3B;
-        }
+        .brand-text { color: #6D5B97; }
+        .brand-bg { background-color: #6D5B97; }
+        .brand-bg-dark { background-color: #2C2A3B; }
     </style>
 </head>
 <body class="antialiased">
@@ -167,10 +161,24 @@
                  <h3 class="text-3xl md:text-4xl font-bold mb-4">El futuro del recuerdo está aquí.</h3>
                  <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-10">Regístrate para recibir acceso anticipado a nuestra beta privada. Ayúdanos a construir una nueva forma de honrar a quienes amamos.</p>
                  
-                 <div class="max-w-xl mx-auto bg-white rounded-xl shadow-2xl p-4">
-                     <iframe width="540" height="380" src="https://f6e0b9a6.sibforms.com/serve/MUIFAN_KFugiq3iLWb5Rwryrou4j-TGH7-Z6ePVkb2hv1AR9ZTihpY039dHwcnmX-rE4XONT6MJvojCpdyGIzDf0-A_9Vso8NVyKv4VKNTQj7DSuuzMjDACrPUlhVe8f9wWBuCRZmmWrsf-a0QtypiDj5DUpzRqxZrZQUh2AcM9luETe-RPO7g4rupVRdVKeNPQt2J4MD75aZns3" frameborder="0" scrolling="no" allowfullscreen style="display: block; width: 100%; border-radius: 8px;"></iframe>
+                 <form name="waitlist" method="POST" data-netlify="true" class="max-w-lg mx-auto">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <input 
+                            type="email" 
+                            name="email" 
+                            required 
+                            placeholder="Tu correo electrónico" 
+                            class="w-full px-5 py-4 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#9884c7] transition"
+                        />
+                        <button 
+                            type="submit" 
+                            class="bg-white text-[#2C2A3B] px-8 py-4 rounded-full font-bold cta-button whitespace-nowrap"
+                        >
+                            Unirme a la Beta
+                        </button>
+                    </div>
+                 </form>
                  </div>
-            </div>
         </section>
     </main>
 
@@ -187,12 +195,14 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Menú Móvil
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
             
+            // Animación Fade-in
             const fadeElems = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
