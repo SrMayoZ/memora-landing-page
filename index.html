@@ -7,11 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Soft Embrace (#F8F7F5 background, #2C2A3B text, #6D5B97 accent) -->
-    <!-- Application Structure Plan: A single-page landing page designed for lead capture. The structure follows a classic conversion funnel: 1. Hero section to grab attention with an emotional hook. 2. "How it Works" to simplify the technology. 3. Features/Benefits to detail the value. 4. Use Cases to show versatility. 5. A dedicated Ethics & Security section to build trust, which is critical for this sensitive service. 6. An FAQ and a final CTA to address doubts and drive sign-ups. This linear, story-telling flow is chosen to gently guide the user from curiosity to trust and finally to action (registration). -->
-    <!-- Visualization & Content Choices: Report Info: Market growth projections -> Goal: Establish credibility -> Viz/Presentation: Large-font animated number counters -> Interaction: Numbers animate when scrolled into view -> Justification: More visually impactful for a landing page than a chart. Report Info: Core service features (chat, voice, video) -> Goal: Explain the product -> Viz/Presentation: Icon-driven feature cards -> Interaction: Fade-in animation on scroll -> Justification: Breaks down complex information into easily scannable chunks. Report Info: Ethical concerns -> Goal: Build user trust -> Viz/Presentation: A dedicated section with trust icons (lock, shield) -> Interaction: Static, clear information -> Justification: Trust-building content should be straightforward and easy to access. No SVG/Mermaid used. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -21,15 +17,15 @@
         .hero-bg {
             background-color: #F8F7F5;
             background-image:
-                radial-gradient(circle at 15% 15%, rgba(109, 91, 151, 0.1) 0%, transparent 30%),
-                radial-gradient(circle at 85% 75%, rgba(109, 91, 151, 0.1) 0%, transparent 40%);
+                radial-gradient(circle at 15% 15%, rgba(109, 91, 151, 0.08) 0%, transparent 30%),
+                radial-gradient(circle at 85% 75%, rgba(109, 91, 151, 0.08) 0%, transparent 40%);
         }
         .cta-button {
             transition: all 0.3s ease;
         }
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(109, 91, 151, 0.2), 0 4px 6px -2px rgba(109, 91, 151, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -5px rgba(109, 91, 151, 0.25);
         }
         .fade-in {
             opacity: 0;
@@ -43,63 +39,70 @@
         .faq-item .answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
+            transition: max-height 0.5s ease-in-out, padding-top 0.5s ease-in-out, padding-bottom 0.5s ease-in-out;
+        }
+        .brand-text {
+            color: #6D5B97;
+        }
+        .brand-bg {
+            background-color: #6D5B97;
+        }
+        .brand-bg-dark {
+            background-color: #2C2A3B;
         }
     </style>
 </head>
-<body>
+<body class="antialiased">
     <header class="bg-white/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-3xl font-bold text-[#6D5B97]">Memora</h1>
+            <h1 class="text-3xl font-bold brand-text">Memora</h1>
             <div class="hidden md:flex space-x-8 items-center">
-                <a href="#como-funciona" class="text-gray-600 hover:text-[#6D5B97] transition">Cómo Funciona</a>
-                <a href="#caracteristicas" class="text-gray-600 hover:text-[#6D5B97] transition">Características</a>
-                <a href="#etica" class="text-gray-600 hover:text-[#6D5B97] transition">Ética y Seguridad</a>
-                <a href="#registro" class="bg-[#6D5B97] text-white px-5 py-2 rounded-full cta-button">Regístrate</a>
+                <a href="#como-funciona" class="text-gray-600 hover:text-[#6D5B97] transition font-medium">Cómo Funciona</a>
+                <a href="#caracteristicas" class="text-gray-600 hover:text-[#6D5B97] transition font-medium">Características</a>
+                <a href="#etica" class="text-gray-600 hover:text-[#6D5B97] transition font-medium">Ética y Seguridad</a>
+                <a href="#registro" class="brand-bg text-white px-5 py-2 rounded-full cta-button font-semibold">Únete a la Beta</a>
             </div>
             <button id="mobile-menu-button" class="md:hidden text-gray-700">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
             </button>
         </nav>
         <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4">
             <a href="#como-funciona" class="block py-2 text-gray-600 hover:text-[#6D5B97]">Cómo Funciona</a>
             <a href="#caracteristicas" class="block py-2 text-gray-600 hover:text-[#6D5B97]">Características</a>
             <a href="#etica" class="block py-2 text-gray-600 hover:text-[#6D5B97]">Ética y Seguridad</a>
-            <a href="#registro" class="block mt-2 text-center bg-[#6D5B97] text-white px-5 py-2 rounded-full cta-button">Regístrate</a>
+            <a href="#registro" class="block mt-2 text-center brand-bg text-white px-5 py-2 rounded-full cta-button">Únete a la Beta</a>
         </div>
     </header>
 
     <main>
-        <section class="hero-bg pt-32 pb-20">
+        <section class="hero-bg pt-40 pb-24">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Inmortaliza su Memoria.</h2>
-                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">Crea una réplica digital de tus seres queridos y mantén su esencia viva para siempre a través de conversaciones de texto, voz y video impulsadas por Inteligencia Artificial.</p>
-                <a href="#registro" class="bg-[#6D5B97] text-white px-10 py-4 rounded-full text-lg font-semibold cta-button inline-block">Únete a la lista de espera</a>
-                <p class="text-sm text-gray-500 mt-4">Sé el primero en saber cuándo lanzamos.</p>
+                <h2 class="text-4xl md:text-6xl font-black leading-tight mb-4">Inmortaliza su Esencia.</h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-10">Crea un gemelo digital de tus seres queridos y mantén su memoria viva para siempre. Conversa, escucha su voz y comparte momentos a través de una IA profundamente respetuosa y personal.</p>
+                <a href="#registro" class="brand-bg text-white px-10 py-4 rounded-full text-lg font-semibold cta-button inline-block">Únete a la Lista de Espera</a>
+                <p class="text-sm text-gray-500 mt-4">Sé el primero en experimentar el futuro del recuerdo.</p>
             </div>
         </section>
 
-        <section id="como-funciona" class="py-20 bg-white">
+        <section id="como-funciona" class="py-24 bg-white">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h3 class="text-3xl md:text-4xl font-bold mb-2">Una conexión que trasciende el tiempo</h3>
-                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Nuestro proceso es respetuoso, seguro y está diseñado para capturar la verdadera esencia de la persona.</p>
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-3">Una Conexión que Trasciende el Tiempo</h3>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Nuestro proceso es seguro, respetuoso y está diseñado para capturar la verdadera esencia de la persona.</p>
                 </div>
                 <div class="grid md:grid-cols-3 gap-10 text-center">
                     <div class="fade-in p-6">
-                        <div class="text-5xl text-[#6D5B97] mb-4">①</div>
+                        <div class="text-6xl font-black brand-text mb-4">1.</div>
                         <h4 class="text-xl font-semibold mb-2">Recopila su Legado</h4>
-                        <p class="text-gray-600">Reunimos recuerdos, grabaciones de voz, textos y videos para que nuestra IA aprenda sus patrones de lenguaje, personalidad y forma de ser.</p>
+                        <p class="text-gray-600">Reunimos recuerdos, grabaciones de voz, textos y videos para que nuestra IA aprenda sus patrones de lenguaje, su personalidad y su forma de ser.</p>
                     </div>
-                    <div class="fade-in p-6">
-                        <div class="text-5xl text-[#6D5B97] mb-4">②</div>
+                    <div class="fade-in p-6" style="transition-delay: 200ms;">
+                        <div class="text-6xl font-black brand-text mb-4">2.</div>
                         <h4 class="text-xl font-semibold mb-2">Creamos su Gemelo Digital</h4>
                         <p class="text-gray-600">Entrenamos un modelo de IA personalizado que no solo imita, sino que entiende y replica la esencia de tu ser querido, con su voz y gestos únicos.</p>
                     </div>
-                    <div class="fade-in p-6">
-                        <div class="text-5xl text-[#6D5B97] mb-4">③</div>
+                    <div class="fade-in p-6" style="transition-delay: 400ms;">
+                        <div class="text-6xl font-black brand-text mb-4">3.</div>
                         <h4 class="text-xl font-semibold mb-2">Conecta Para Siempre</h4>
                         <p class="text-gray-600">Interactúa con su réplica digital a través de chat, llamadas de voz o videollamadas, en cualquier momento y desde cualquier lugar.</p>
                     </div>
@@ -107,25 +110,25 @@
             </div>
         </section>
         
-        <section id="caracteristicas" class="py-20">
+        <section id="caracteristicas" class="py-24">
              <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h3 class="text-3xl md:text-4xl font-bold mb-2">Conversaciones que sanan y enseñan</h3>
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-3">Conversaciones que Sanan y Enseñan</h3>
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto">Funciones diseñadas para ofrecer consuelo, preservar el legado familiar y mantener vivo el conocimiento.</p>
                 </div>
                 <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="fade-in bg-white p-8 rounded-xl shadow-md border border-gray-100">
-                         <div class="text-3xl text-[#6D5B97] mb-4">💬</div>
+                    <div class="fade-in bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                         <svg class="w-12 h-12 brand-text mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 5.523-4.477 10-10 10S1 17.523 1 12 5.477 2 11 2s10 4.477 10 10z"></path></svg>
                          <h4 class="text-2xl font-semibold mb-3">Chat de Texto Ilimitado</h4>
                          <p class="text-gray-600">"Hablar con él me ayudó a sanar". Chatea cuando lo necesites, comparte tus pensamientos y recibe respuestas que reflejan su personalidad, brindando consuelo en el duelo.</p>
                     </div>
-                     <div class="fade-in bg-white p-8 rounded-xl shadow-md border border-gray-100">
-                         <div class="text-3xl text-[#6D5B97] mb-4">🎙️</div>
+                     <div class="fade-in bg-white p-8 rounded-xl shadow-lg border border-gray-100" style="transition-delay: 200ms;">
+                         <svg class="w-12 h-12 brand-text mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
                          <h4 class="text-2xl font-semibold mb-3">Llamadas con su Voz Real</h4>
                          <p class="text-gray-600">"Imagina preguntarle a tu abuela su receta favorita". Escucha su voz de nuevo. Nuestra tecnología de clonación de voz recrea su tono y cadencia para conversaciones naturales.</p>
                     </div>
-                     <div class="fade-in bg-white p-8 rounded-xl shadow-md border border-gray-100">
-                         <div class="text-3xl text-[#6D5B97] mb-4">🎥</div>
+                     <div class="fade-in bg-white p-8 rounded-xl shadow-lg border border-gray-100" style="transition-delay: 400ms;">
+                         <svg class="w-12 h-12 brand-text mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                          <h4 class="text-2xl font-semibold mb-3">Videollamadas con Avatar</h4>
                          <p class="text-gray-600">Preserva un legado de conocimiento. Un líder empresarial o una figura pública puede seguir compartiendo consejos con su sucesor, facilitando la transición.</p>
                     </div>
@@ -133,25 +136,25 @@
             </div>
         </section>
 
-        <section id="etica" class="py-20 bg-white">
+        <section id="etica" class="py-24 bg-white">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h3 class="text-3xl md:text-4xl font-bold mb-2">Ética, Dignidad y Seguridad</h3>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Construido sobre una base de respeto por el difunto y control total para ti. Tu confianza es nuestra prioridad.</p>
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-3">Ética, Dignidad y Seguridad</h3>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Construido sobre una base de respeto por la memoria y control total para ti. Tu confianza es nuestra prioridad.</p>
                 </div>
                 <div class="grid md:grid-cols-3 gap-10 text-center">
                     <div class="fade-in p-6">
-                        <div class="text-4xl mb-4">🛡️</div>
+                        <svg class="w-16 h-16 brand-text mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         <h4 class="text-xl font-semibold mb-2">Consentimiento y Control</h4>
                         <p class="text-gray-600">Se requiere un consentimiento claro y transparente. Tienes el control total y puedes dar de baja la simulación en cualquier momento, sin preguntas.</p>
                     </div>
-                    <div class="fade-in p-6">
-                        <div class="text-4xl mb-4">🔒</div>
+                    <div class="fade-in p-6" style="transition-delay: 200ms;">
+                         <svg class="w-16 h-16 brand-text mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                         <h4 class="text-xl font-semibold mb-2">Privacidad Absoluta</h4>
                         <p class="text-gray-600">Todos los datos son cifrados de extremo a extremo y almacenados de forma segura. El acceso está restringido únicamente a los usuarios autorizados por ti.</p>
                     </div>
-                    <div class="fade-in p-6">
-                        <div class="text-4xl mb-4">❤️</div>
+                    <div class="fade-in p-6" style="transition-delay: 400ms;">
+                         <svg class="w-16 h-16 brand-text mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                         <h4 class="text-xl font-semibold mb-2">Diseño Respetuoso</h4>
                         <p class="text-gray-600">Colaboramos con expertos en tanatología y bioética para garantizar que nuestra tecnología siempre priorice la dignidad del difunto y el bienestar emocional del usuario.</p>
                     </div>
@@ -159,85 +162,25 @@
             </div>
         </section>
         
-        <section id="mercado" class="py-20">
-            <div class="container mx-auto px-6">
-                <div class="text-center">
-                    <h3 class="text-3xl md:text-4xl font-bold mb-4">Uniendo Tecnología y Humanidad</h3>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10">Memora es parte de una nueva era en la preservación del legado, un mercado global en rápido crecimiento.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                        <div class="fade-in bg-white p-8 rounded-xl shadow-md">
-                            <p class="text-5xl font-bold text-[#6D5B97] mb-2" data-target="3.5">0</p>
-                            <p class="text-lg font-semibold">Mil Millones de USD</p>
-                            <p class="text-gray-500">Mercado global de servicios funerarios digitales para 2027.</p>
-                        </div>
-                        <div class="fade-in bg-white p-8 rounded-xl shadow-md">
-                            <p class="text-5xl font-bold text-[#6D5B97] mb-2" data-target="54.5">0</p>
-                            <p class="text-lg font-semibold">Mil Millones de USD</p>
-                            <p class="text-gray-500">Valor estimado del segmento de "inmortalidad digital" para 2029.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="faq" class="py-20 bg-white">
-            <div class="container mx-auto px-6 max-w-3xl">
-                <div class="text-center mb-12">
-                    <h3 class="text-3xl md:text-4xl font-bold">Preguntas Frecuentes</h3>
-                </div>
-                <div class="space-y-4">
-                    <div class="faq-item bg-gray-50 p-4 rounded-lg cursor-pointer">
-                        <div class="question flex justify-between items-center font-semibold">
-                            <span>¿Es ético crear una réplica de una persona fallecida?</span>
-                            <span class="transform transition-transform duration-300">+</span>
-                        </div>
-                        <div class="answer text-gray-600 pt-2">
-                            <p>Entendemos la sensibilidad de esta pregunta. Nuestro enfoque se basa en el consentimiento informado, la dignidad y el control del usuario. Colaboramos con expertos para asegurar que el servicio sea una herramienta de consuelo y no cause daño, siempre priorizando el respeto al legado de la persona.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-gray-50 p-4 rounded-lg cursor-pointer">
-                        <div class="question flex justify-between items-center font-semibold">
-                            <span>¿Qué datos se necesitan para crear el avatar?</span>
-                             <span class="transform transition-transform duration-300">+</span>
-                        </div>
-                        <div class="answer text-gray-600 pt-2">
-                            <p>Cuantos más datos de calidad tengamos, más precisa será la réplica. Esto incluye grabaciones de voz, videos, correos electrónicos, mensajes de texto y acceso a redes sociales. Idealmente, el proceso se inicia en vida a través de entrevistas guiadas. Todos los datos se manejan con la máxima confidencialidad.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-gray-50 p-4 rounded-lg cursor-pointer">
-                        <div class="question flex justify-between items-center font-semibold">
-                            <span>¿Se puede eliminar la réplica digital?</span>
-                             <span class="transform transition-transform duration-300">+</span>
-                        </div>
-                        <div class="answer text-gray-600 pt-2">
-                            <p>Absolutamente. Los herederos o la persona designada tienen control total para pausar o eliminar permanentemente la simulación y todos los datos asociados en cualquier momento. Creemos en el derecho al olvido digital.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <section id="registro" class="py-20 bg-gray-800 text-white">
+        <section id="registro" class="py-24 brand-bg-dark text-white">
             <div class="container mx-auto px-6 text-center">
                  <h3 class="text-3xl md:text-4xl font-bold mb-4">El futuro del recuerdo está aquí.</h3>
-                 <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">Regístrate para recibir acceso anticipado a nuestra beta privada. Ayúdanos a construir una nueva forma de honrar a quienes amamos.</p>
-                 <form id="beta-form" class="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
-                     <input type="email" id="email-input" required placeholder="Tu correo electrónico" class="w-full px-4 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#9884c7]">
-                     <button type="submit" class="bg-white text-[#6D5B97] px-8 py-3 rounded-full font-semibold cta-button">Notifícame</button>
-                 </form>
-                 <div id="form-message" class="mt-4 text-green-400"></div>
+                 <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-10">Regístrate para recibir acceso anticipado a nuestra beta privada. Ayúdanos a construir una nueva forma de honrar a quienes amamos.</p>
+                 
+                 <div class="max-w-xl mx-auto bg-white rounded-xl shadow-2xl p-4">
+                     <iframe width="540" height="380" src="https://f6e0b9a6.sibforms.com/serve/MUIFAN_KFugiq3iLWb5Rwryrou4j-TGH7-Z6ePVkb2hv1AR9ZTihpY039dHwcnmX-rE4XONT6MJvojCpdyGIzDf0-A_9Vso8NVyKv4VKNTQj7DSuuzMjDACrPUlhVe8f9wWBuCRZmmWrsf-a0QtypiDj5DUpzRqxZrZQUh2AcM9luETe-RPO7g4rupVRdVKeNPQt2J4MD75aZns3" frameborder="0" scrolling="no" allowfullscreen style="display: block; width: 100%; border-radius: 8px;"></iframe>
+                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-gray-900 text-gray-400 py-8">
+    <footer class="py-12 bg-gray-900 text-gray-400">
         <div class="container mx-auto px-6 text-center">
             <p>&copy; 2025 Memora Technologies. Todos los derechos reservados.</p>
             <div class="flex justify-center space-x-6 mt-4">
-                <a href="#" class="hover:text-white">Política de Privacidad</a>
-                <a href="#" class="hover:text-white">Términos de Servicio</a>
-                <a href="#" class="hover:text-white">Contacto</a>
+                <a href="#" class="hover:text-white transition">Política de Privacidad</a>
+                <a href="#" class="hover:text-white transition">Términos de Servicio</a>
+                <a href="#" class="hover:text-white transition">Contacto</a>
             </div>
         </div>
     </footer>
@@ -246,7 +189,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
@@ -259,77 +201,7 @@
                     }
                 });
             }, { threshold: 0.1 });
-
             fadeElems.forEach(el => observer.observe(el));
-            
-            const counterObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const el = entry.target;
-                        const target = parseFloat(el.getAttribute('data-target'));
-                        let current = 0;
-                        const increment = target / 100;
-
-                        const updateCounter = () => {
-                            if (current < target) {
-                                current += increment;
-                                el.innerText = current.toFixed(1);
-                                requestAnimationFrame(updateCounter);
-                            } else {
-                                el.innerText = target.toFixed(1);
-                            }
-                        };
-                        updateCounter();
-                        observer.unobserve(el);
-                    }
-                });
-            }, { threshold: 0.5 });
-            
-            document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
-
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const answer = item.querySelector('.answer');
-                    const icon = item.querySelector('.question span:last-child');
-                    
-                    if (answer.style.maxHeight) {
-                        answer.style.maxHeight = null;
-                        icon.style.transform = 'rotate(0deg)';
-                    } else {
-                        faqItems.forEach(otherItem => {
-                           otherItem.querySelector('.answer').style.maxHeight = null;
-                           otherItem.querySelector('.question span:last-child').style.transform = 'rotate(0deg)';
-                        });
-                        answer.style.maxHeight = answer.scrollHeight + "px";
-                        icon.style.transform = 'rotate(45deg)';
-                    }
-                });
-            });
-
-            const betaForm = document.getElementById('beta-form');
-            const emailInput = document.getElementById('email-input');
-            const formMessage = document.getElementById('form-message');
-
-            betaForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                if (emailInput.value) {
-                    formMessage.textContent = '¡Gracias por tu interés! Te hemos añadido a la lista de espera.';
-                    emailInput.value = '';
-                    setTimeout(() => {
-                        formMessage.textContent = '';
-                    }, 5000);
-                }
-            });
-
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
         });
     </script>
 </body>
